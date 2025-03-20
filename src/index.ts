@@ -5,7 +5,7 @@ const Port:number = Number(process.env.PORT || 3000);
 
 new App().server
     .listen(Port, "localhost", () => {
-        console.log(`O servidor esta rodando na Porta ${Port}.`);
+        console.log(`🚀 Servidor rodando em http://localhost:${Port}`);
     })
     .on("error", (err: any) => {
         if (err.code === "EADDRINUSE") {

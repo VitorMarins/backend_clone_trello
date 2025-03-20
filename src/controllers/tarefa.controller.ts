@@ -1,4 +1,4 @@
-import Tarefa from "./../models/tarefa.model";
+import { Tarefa } from "./../models/tarefa.model";
 import { Request, Response } from "express";
 
 export default class TarefaController {

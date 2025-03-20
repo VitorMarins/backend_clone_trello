@@ -1,6 +1,7 @@
 import express, { Application } from "express";
 import cors from "cors";
 import Routes from "./routes/routes";
+import connectDB from "./config/database";
 
 const corsOptions = {
   origin: '*', // Coloque a URL do seu frontend aqui
@@ -26,3 +27,5 @@ export default class App{
     new Routes(this.server);
   }
 }
+
+connectDB();

@@ -12,19 +12,19 @@ class ColunaRoutes {
     intializeRoutes() {
 
         // Criar uma nova coluna.
-        this.router.post("/coluna", this.controller.CreateColuna);
+        this.router.post("/", this.controller.CreateColuna);
 
         // Retornar as colunas já cadastradas.
-        this.router.get("/colunas", this.controller.GetColunas);
+        this.router.get("/", this.controller.GetColunas);
 
         // Retorna uma coluna específica pelo seu id
-        this.router.get("/coluna/:id", this.controller.GetColunaByID);
+        this.router.get("/:id", this.controller.GetColunaByID);
 
         // Atualizar uma coluna pelo seu id
-        this.router.put("/coluna/:id", this.controller.UpdateColuna);
+        this.router.put("/:id", this.controller.UpdateColuna);
 
         // Deleta uma coluna pelo seu id
-        this.router.delete("/coluna/:id", this.controller.DeleteColuna);
+        this.router.delete("/:id", this.controller.DeleteColuna);
     }
 }
 

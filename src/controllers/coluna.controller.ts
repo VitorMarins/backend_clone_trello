@@ -1,5 +1,5 @@
-import Coluna from "./../models/coluna.model";
-import Tarefa from "./../models/tarefa.model";
+import { Coluna } from "./../models/coluna.model";
+import { Tarefa } from "./../models/tarefa.model";
 import { Request, Response } from "express";
 
 export default class ColunaController {
@@ -25,12 +25,11 @@ export default class ColunaController {
     async CreateColuna(req: Request, res: Response): Promise<any> {
         try {
             const { titulo, tarefas } = req.body;
-            // Verifique se todas as tarefas existem
             if (tarefas && tarefas.length > 0) {
                 for (const tarefaId of tarefas) {
-                    const tarefaExists = await Tarefa.findById(tarefaId);
-                    if (!tarefaExists) {
-                        return res.status(404).json({ message: `Tarefa with id ${tarefaId} not found` });
+                    const tarefaExiste = await Tarefa.findById(tarefaId);
+                    if (!tarefaExiste) {
+                        return res.status(404).json({ message: `Tarefa com o id ${tarefaId} não foi encontrada.` });
                     }
                 }
             }
@@ -46,12 +45,11 @@ export default class ColunaController {
         try {
             const { id } = req.params;
             const { titulo, tarefas } = req.body;
-            // Verify if all tarefas exist
             if (tarefas && tarefas.length > 0) {
                 for (const tarefaId of tarefas) {
                     const tarefaExists = await Tarefa.findById(tarefaId);
                     if (!tarefaExists) {
-                        return res.status(404).json({ message: `Tarefa with id ${tarefaId} not found` });
+                        return res.status(404).json({ message: `Tarefa com o id ${tarefaId} não foi encontrada.`});
                     }
                 }
             }
@@ -59,7 +57,7 @@ export default class ColunaController {
             res.status(200).json(coluna);
         } catch (error) {
             console.error(error);
-            res.status(500).json({ message: "Internal server error" });
+            res.status(500).json({ message: "Falha no servidor interno" });
         }
     };
 
