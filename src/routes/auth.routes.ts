@@ -12,10 +12,10 @@ class AuthRoutes {
     intializeRoutes() {
 
         // Criar uma nova coluna.
-        this.router.post("/", this.controller.Registrar);
+        this.router.post("/registrar", this.controller.Registrar);
 
         // Retornar as colunas já cadastradas.
-        this.router.post("/", this.controller.Login);
+        this.router.post("/login", this.controller.Login);
     }
 }
 

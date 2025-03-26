@@ -1,5 +1,6 @@
 import { Router } from "express";
 import ColunaController from "../controllers/coluna.controller";
+import authMiddleware from '../middleware/auth.middleware';
 
 class ColunaRoutes {
     router = Router();
@@ -12,19 +13,19 @@ class ColunaRoutes {
     intializeRoutes() {
 
         // Criar uma nova coluna.
-        this.router.post("/", this.controller.CreateColuna);
+        this.router.post("/", authMiddleware, this.controller.CreateColuna);
 
         // Retornar as colunas já cadastradas.
-        this.router.get("/", this.controller.GetColunas);
+        this.router.get("/", authMiddleware, this.controller.GetColunas);
 
         // Retorna uma coluna específica pelo seu id
-        this.router.get("/:id", this.controller.GetColunaByID);
+        this.router.get("/:id", authMiddleware, this.controller.GetColunaByID);
 
         // Atualizar uma coluna pelo seu id
-        this.router.put("/:id", this.controller.UpdateColuna);
+        this.router.put("/:id", authMiddleware, this.controller.UpdateColuna);
 
         // Deleta uma coluna pelo seu id
-        this.router.delete("/:id", this.controller.DeleteColuna);
+        this.router.delete("/:id", authMiddleware, this.controller.DeleteColuna);
     }
 }
 

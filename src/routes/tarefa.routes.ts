@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import TarefaController from '../controllers/tarefa.controller';
+import authMiddleware from '../middleware/auth.middleware';
 
 class TarefaRoutes {
     router = Router();
